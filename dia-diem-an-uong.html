@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="flight.png">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title style="">Địa điểm ăn uống | Du lịch Việt Nam</title>
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Rowdies:wght@300&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@1,700&display=swap');
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        position: relative;
+    }
+
+    .menu {
+        width: 100%;
+        padding: 10px 10px;
+        position: sticky;
+        top: 0;
+        display: flex;
+        justify-content: space-between;
+        background: #f2f2f2;
+        align-items: center;
+        z-index: 100;
+    }
+
+    .left-arrow-alt {
+        display: none;
+        font-size: 25px;
+    }
+
+    .menu-logo {
+        font-size: 25px;
+        font-family: 'Rowdies', cursive;
+        color: rgb(15, 15, 15);
+    }
+
+    .nav>li {
+        float: left;
+        margin-right: 15px;
+    }
+
+    .nav>li>a {
+        font-size: 16px;
+        text-decoration: none;
+        text-transform: uppercase;
+        color: rgb(13, 13, 13);
+    }
+
+    .nav li {
+        position: relative;
+        list-style: none;
+    }
+
+    .nav li a {
+        padding: 10px;
+        line-height: 20px;
+        display: inline-block;
+    }
+
+    .nav .sub-menu {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 100%;
+        width: 200px;
+        background-color: #f2f2f2;
+        padding: 5px 20px;
+        transition: 2s;
+    }
+
+    .sub-menu li a {
+        text-decoration: none;
+        color: #161616;
+    }
+
+    ul.nav li a::after {
+        position: absolute;
+        content: '';
+        top: 35px;
+        left: 0;
+        width: 0%;
+        height: 2px;
+        background: #161616;
+        transition: 0.25s;
+    }
+
+    ul.nav li a:hover:after {
+        width: 100%;
+    }
+
+    .nav li:hover>.sub-menu {
+        display: block;
+    }
+
+    .nav>li>.sub-menu {
+        top: 40px;
+        left: 0;
+    }
+
+    .banner {
+        width: 100%;
+        height: 450px;
+        position: relative;
+    }
+
+    .banner img {
+        width: 100%;
+        height: 450px;
+        object-fit: cover;
+    }
+
+    .banner h1 {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 50px;
+        color: aliceblue;
+        font-weight: 700;
+    }
+
+    .teck-list {
+        width: 100%;
+        margin-top: 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .destination-menu ul {
+        display: flex;
+    }
+
+    .destination-menu ul li {
+        list-style: none;
+        padding: 10px 10px;
+    }
+
+    .destination-menu ul li a {
+        text-decoration: none;
+        font-size: 16px;
+        color: #16161689;
+        font-family: 'Roboto Condensed', sans-serif;
+        position: relative;
+    }
+
+    .nav-tabs li.active a::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        background: transparent;
+        top: 20px;
+        left: 0;
+    }
+
+    .nav-tabs li.active a::after,
+    .nav-tabs li.active:hover a::after {
+        background: #636363;
+
+    }
+
+    .banner img {
+        width: 100%;
+        height: 450px;
+        object-fit: cover;
+    }
+
+    .banner h1 {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 50px;
+        color: aliceblue;
+        font-weight: 700;
+    }
+
+    .teck-list {
+        width: 100%;
+        margin-top: 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .destination-menu ul {
+        display: flex;
+    }
+
+    .destination-menu ul li {
+        list-style: none;
+        padding: 10px 10px;
+    }
+
+    .destination-menu ul li a {
+        text-decoration: none;
+        font-size: 16px;
+        color: #16161689;
+        font-family: 'Roboto Condensed', sans-serif;
+    }
+
+    .destination-menu ul li a::after {
+        content: '';
+    }
+
+    .destination-menu ul li:hover a {
+        color: rgb(22, 22, 22);
+    }
+
+    .card {
+        width: 350px;
+    }
+
+    .card img {
+        width: 350px;
+        border-radius: 10px;
+    }
+
+    .card h2 {
+        padding: 10px 10px;
+        font-size: 20px;
+    }
+
+    .line {
+        margin-top: 10px;
+        width: 50px;
+        height: 3px;
+        background: #636363;
+    }
+
+    .places-to-eat {
+        margin-top: 20px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        column-gap: 10px;
+        row-gap: 20px;
+    }
+
+    .end-page {
+        color: aliceblue;
+        margin-top: 50px;
+        background: #282828;
+        display: flex;
+        align-items: center;
+        flex-flow: nowrap;
+        padding: 20px 20px;
+        justify-content: space-evenly;
+    }
+
+    .introduce-card {
+        width: 250px;
+    }
+
+    .destination-title a {
+        text-decoration: none;
+        color: aliceblue;
+    }
+
+    .destination-card ul li {
+        list-style: none;
+    }
+
+    .contact-title a {
+        color: aliceblue;
+        font-size: 25px;
+        padding: 10px 10px;
+    }
+
+    .line {
+        background-color: rgba(73, 73, 73, 0.5);
+        display: block;
+        height: 3px;
+        margin: 1em 0;
+        max-width: 30px;
+        width: 100%;
+    }
+</style>
+
+<body>
+    <div class="menu">
+        <div class="left-arrow-alt"><i class='bx bx-left-arrow-alt'></i></div>
+        <div class="menu-logo">
+            <h1>Du lịch Việt Nam</h1>
+        </div>
+        <div class="menu-list">
+            <ul class="nav">
+                <li><a href="index.html">Trang chủ</a></li>
+                <li><a href="#">Cẩm nang</a></li>
+                <li>
+                    <a href="#">Lựa chọn điểm đến <i class='bx bx-chevron-down'></i></a>
+                    <ul class="sub-menu">
+                        <li><a href="nha-trang.html">Nha trang</a></li>
+                        <li><a href="nha-trang.html">Đà Nẵng</a></li>
+                        <li><a href="nha-trang.html">Đà Lạt</a></li>
+                        <li><a href="nha-trang.html">Phú Quốc</a></li>
+                    </ul>
+                </li>
+                <li><a href="./dia-diem-an-uong.html">Địa điểm ăn uống</a></li>
+                <li><a href="./dia-diem-du-lich.html">Địa điểm du lịch</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="banner">
+        <img src="./dia-diem-an-uong-banner.jpg" alt="">
+        <h1>Địa điểm ăn uống</h1>
+    </div>
+    <div class="teck-list">
+        <h1>Lựa chọn điểm đến</h1>
+        <div class="destination-menu">
+            <ul class="nav-tabs">
+                <li class="active"><a href="#nha-trang">Nha Trang</a></li>
+                <li><a href="#phu-quoc">Phú Quốc</a></li>
+                <li><a href="#da-lat">Đà Lạt</a></li>
+                <li><a href="#quy-nhon">Quy Nhơn</a></li>
+                <li><a href="#da-nang">Đà Nẵng</a></li>
+                <li><a href="#ninh-binh">Ninh Bình</a></li>
+                <li><a href="#hue">Huế</a></li>
+            </ul>
+        </div>
+        <div class="places-to-eat" id="nha-trang">
+            <div class="card">
+                <img src="./quan-an-ngon-o-nha-trang-12.jpg" alt="">
+                <h2>Top 10 Quán ăn ngon ở Nha Trang đã sưu tầm rất lâu rồi </h2>
+                <div class="line"></div>
+            </div>
+            <div class="card">
+                <img src="./quan-hai-san-o-nha-trang-11.jpg" alt="">
+                <h2>Top 10 Quán ăn ngon ở Nha Trang đã sưu tầm rất lâu rồi </h2>
+                <div class="line"></div>
+            </div>
+        </div>
+        <div class="places-to-eat" id="phu-quoc">
+            <div class="card">
+                <img src="./quan-hai-san-o-duong-dong-phu-quoc.jpg" alt="">
+                <h2>Top 10 quán hải sản ở Dương Đông Phú Quốc bạn nhất định phải thử</h2>
+                <div class="line"></div>
+            </div>
+            <div class="card">
+                <img src="./mon-an-dac-san-o-phu-quoc-10.jpg" alt="">
+                <h2>Top 5 món ăn đặc sản ở Phú Quốc</h2>
+                <div class="line"></div>
+            </div>
+            <div class="card">
+                <img src="./bun-quay-phu-quoc-7.jpg" alt="">
+                <h2>Bún Quậy Phú Quốc – Nên ăn quán nào?, Món này có gì? </h2>
+                <div class="line"></div>
+            </div>
+        </div>
+        <div class="places-to-eat" id="da-lat">
+            <div class="card">
+                <img src="./mon-an-ngon-o-da-lat-9.jpg" alt="">
+                <h2>Top 7 Món ăn ngon ở Đà Lạt – Dành cho tín đồ hệ “Ẩm Thực”</h2>
+                <div class="line"></div>
+            </div>
+            <div class="card">
+                <img src="./quan-banh-uot-long-ga-da-lat-8.jpg" alt="">
+                <h2>Top 6 quán bánh ướt lòng gà Đà Lạt – Ngon nức tiếng, ăn là ghiền</h2>
+                <div class="line"></div>
+            </div>
+            <div class="card">
+                <img src="./mon-an-vat-o-cho-dem-da-lat-15.jpg" alt="">
+                <h2>Món ăn vặt ở chợ đêm Đà Lạt – Nhất định đừng bỏ sót món nào</h2>
+                <div class="line"></div>
+            </div>
+            <div class="card">
+                <img src="./kem-bo-da-lat-ngon-7.jpg" alt="">
+                <h2>Ăn Kem bơ Đà Lạt ngon ở đâu? – Top 5 quán gây nghiện nhất</h2>
+                <div class="line"></div>
+            </div>
+        </div>
+        <div class="places-to-eat" id="quy-nhon">
+            <div class="card">
+                <img src="./quan-banh-xeo-tom-nhay-quy-nhon-7.jpg" alt="">
+                <h2>Top 5 Quán bánh xèo tôm nhảy Quy Nhơn – Trứ danh, khiến du khách mê mẫn</h2>
+                <div class="line"></div>
+            </div>
+            <div class="card">
+                <img src="./mon-an-ngon-o-quy-nhon-10.jpg" alt="">
+                <h2>List 6 món ăn ngon ở Quy Nhơn – Khiến bạn phải thỏa cái “bụng” của mình</h2>
+                <div class="line"></div>
+            </div>
+        </div>
+        <div class="places-to-eat" id="da-nang">
+            <div class="card">
+                <img src="./mon-an-dac-san-ngon-o-da-nang-14.jpg" alt="">
+                <h2>10+ Món ăn đặc sản ngon ở Đà Nẵng, khiến du khách phải xuýt xoa</h2>
+                <div class="line"></div>
+            </div>
+        </div>
+        <div class="places-to-eat" id="ninh-binh">
+            <div class="card">
+                <img src="./an-gi-o-ninh-binh-1.jpg" alt="">
+                <h2> Ăn gì ở Ninh Bình? – 8 món ăn đặc sản khiến bạn phải say mê đến cùng</h2>
+                <div class="line"></div>
+            </div>
+        </div>
+        <div class="places-to-eat" id="hue">
+            <div class="card">
+                <img src="./nen-an-gi-o-hue.jpg" alt="">
+                <h2>Nên ăn gì ở Huế đây? Bật mí luôn 10 món ăn đậm xứ Kinh Thành</h2>
+                <div class="line"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="end-page">
+        <div class="introduce-card">
+            <div class="introduce-title">
+                <h2>Giới thiệu</h2>
+                <div class="line"></div>
+                <p>Hello! Mình là Long, là một người có sở thích đi du lịch. Đồng thời cũng là một
+                    người rất thích viết lách. Nên mình đã tạo ra blog này, hy vọng sẽ chia sẽ những
+                    thông tin hữu ích đến cho bạn</p>
+            </div>
+        </div>
+        <div class="destination-card">
+            <div class="destination-title">
+                <a href="">
+                    <h2>Điểm đến nổi tiếng</h2>
+                </a>
+                <div class="line"></div>
+                <div class="destination-card">
+                    <ul>
+                        <li><a href="">Hà Giang</a></li>
+                        <li><a href="">Phú Quốc</a></li>
+                        <li><a href="">Đà Lạt</a></li>
+                        <li><a href="">Đà Nẵng</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="contact">
+            <div class="contact-title">
+                <h3>Liên hệ</h3>
+                <div class="line"> </div>
+                <a href="" class="facebook"><i class='bx bxl-facebook-circle'></i></a>
+                <a href="" class="instagram"><i class='bx bxl-instagram-alt'></i></a>
+                <a href="" class="youtube"><i class='bx bxl-youtube'></i></a>
+            </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+        <script>
+            $(document).ready(function () {
+                $('.places-to-eat').hide();
+                $('.places-to-eat:first-child').fadeIn();
+                $('.nav-tabs li').click(function () {
+                    $('.nav-tabs li').removeClass('active');
+                    $(this).addClass('active');
+                    let places_to_eat = $(this).children('a').attr('href');
+                    $('.places-to-eat').hide();
+                    $(places_to_eat).fadeIn();
+                    return false;
+                });
+            });
+        </script>
+
+</body>
+
+</html>

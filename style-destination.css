@@ -1,0 +1,299 @@
+@import url('https://fonts.googleapis.com/css2?family=Rowdies:wght@300&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    position: relative;
+}
+
+.menu {
+    width: 100%;
+    padding: 10px 10px;
+    position: sticky;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    background: #f2f2f2;
+    align-items: center;
+    z-index: 100;
+}
+
+.left-arrow-alt {
+    display: none;
+    font-size: 25px;
+}
+
+.menu-logo {
+    font-size: 25px;
+    font-family: 'Rowdies', cursive;
+    color: rgb(15, 15, 15);
+}
+.nav>li {
+    float: left;
+    margin-right: 15px;
+}
+
+.nav>li>a {
+    font-size: 16px;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: rgb(13, 13, 13);
+}
+
+.nav li {
+    position: relative;
+    list-style: none;
+}
+
+.nav li a {
+    padding: 10px;
+    line-height: 20px;
+    display: inline-block;
+}
+
+.nav .sub-menu {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 100%;
+    width: 200px;
+    background-color: #f2f2f2;
+    padding: 5px 20px;
+    transition: 2s;
+}
+
+.sub-menu li a {
+    text-decoration: none;
+    color: #161616;
+}
+
+ul.nav li a::after {
+    position: absolute;
+    content: '';
+    top: 35px;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background: #161616;
+    transition: 0.25s;
+}
+
+ul.nav li a:hover:after {
+    width: 100%;
+}
+
+.nav li:hover>.sub-menu {
+    display: block;
+}
+
+.nav>li>.sub-menu {
+    top: 40px;
+    left: 0;
+}
+
+.content {
+    position: relative;
+    height: 239px;
+    width: 100%;
+}
+
+.content img {
+    height: 239px;
+    width: 100%;
+    object-fit: cover;
+}
+
+.content-text {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.content-text h1 {
+    color: aliceblue;
+    font-size: 55px;
+}
+
+.content-introduce {
+    padding: 20px 20px;
+    background: #a6a6a625;
+}
+
+.content-introduce>.line {
+    width: 100%;
+    height: 3px;
+    background: #7d7d7d;
+    margin: 20px 0 20px 0;
+}
+
+.content-introduce-card {
+    position: relative;
+    width: 550px;
+    height: 250px;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.content-introduce-card-img img {
+    z-index: 100px;
+    width: 550px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.content-introduce-card-text {
+    position: absolute;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0 20px;
+    background: #16161683;
+    color: aliceblue;
+    border-radius: 10px;
+    padding-bottom: 25px;
+}
+
+.content-introduce-card-text h1 {
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.line-card {
+    width: 15%;
+    height: 3px;
+    background: #7d7d7d;
+}
+
+.content-introduce-box-card {
+    position: relative;
+    width: 265px;
+    height: 265px;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+.content-introduce-card-box-img img {
+    z-index: 100px;
+    width: 265px;
+    height: 265px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.content-introduce-card-box-text {
+    position: absolute;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0 20px;
+    background: #16161683;
+    color: aliceblue;
+    border-radius: 10px;
+    padding-bottom: 25px;
+}
+
+.content-introduce-card-box-text h1 {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+.content-introduce-list{
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
+    justify-content: center;
+}
+.bx-select-multiple-contnent-left img{
+    width: 350px;
+    margin-right: 20px;
+    border-radius: 10px;
+}
+.bx-select-multiple-contnent-right h1{
+    font-size: 25px;
+    font-weight: 400;
+}
+.bx-select-multiple-contnent{
+    padding: 20px 20px;
+    display: flex;
+    align-items: center;
+}
+.end-page{
+    color: aliceblue;
+    margin-top: 50px;
+    background: #282828;
+    display: flex;
+    align-items: center;
+    flex-flow: nowrap;
+    padding: 20px 20px;
+    justify-content: space-evenly;
+}
+.introduce-card{
+    width: 250px;
+}
+.destination-title a{
+    text-decoration: none;
+    color: aliceblue;
+}
+.destination-card ul li{
+    list-style: none;
+}
+.contact-title a{
+    color: aliceblue;
+    font-size: 25px;
+    padding: 10px 10px;
+}
+.line{
+    background-color: rgba(73, 73, 73, 0.5);
+    display: block;
+    height: 3px;
+    margin: 1em 0;
+    max-width: 30px;
+    width: 100%;
+}
+@media screen and (width: 1024px) {
+    .menu {
+        flex-direction: column;
+        display: flex;
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width:914px) {
+    .menu {
+        display: flex;
+    }
+
+    .menu-logo {
+        width: 100%;
+    }
+
+    .left-arrow-alt {
+        height: 100%;
+        display: flex;
+        align-items: center;
+
+    }
+
+    .menu .menu-logo h1 {
+        text-align: center;
+        font-size: 25px;
+    }
+
+    .menu .menu-list {
+        display: none;
+    }
+}
