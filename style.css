@@ -304,3 +304,35 @@ body {
     max-width: 30px;
     width: 100%;
 }
+
+
+@media screen and (max-width: 768px) {
+    .menu{
+        flex-direction: column;
+    }
+    .sub-menu{
+        margin-top: 20px;
+    }
+    .section-tour-slide{
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .section-title-content{
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .section-title-card{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        border-bottom: none;
+    }
+    .title-content{
+        margin: 0 10px 0 10px;
+    }
+    .section-content-main{
+        padding: 10px 10px;
+        display: block;
+    }
+    .card-right{
+        display: none;
+    }
+}
